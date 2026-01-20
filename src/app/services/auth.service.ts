@@ -36,18 +36,52 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.API_URL}/login`, credentials)
-      .pipe(
-        tap(response => {
+    // For demo purposes - replace with actual API call
+    return new Observable(observer => {
+      setTimeout(() => {
+        // Demo credentials
+        const demoUsers = [
+          { email: 'admin@company.com', password: 'admin123', role: 'admin' as const, name: 'Admin User' },
+          { email: 'employee@company.com', password: 'emp123', role: 'employee' as const, name: 'John Employee' },
+          { email: 'manager@company.com', password: 'mgr123', role: 'manager' as const, name: 'Jane Manager' }
+        ];
+
+        const user = demoUsers.find(u => u.email === credentials.email && u.password === credentials.password);
+
+        if (user) {
+          const response: LoginResponse = {
+            token: `demo-token-${Date.now()}`,
+            user: {
+              id: `user-${user.role}`,
+              email: user.email,
+              name: user.name,
+              role: user.role
+            },
+            expiresIn: 3600 // 1 hour
+          };
           this.setSession(response);
-        }),
-        catchError(this.handleError)
-      );
+          observer.next(response);
+        } else {
+          observer.error(new Error('Invalid email or password'));
+        }
+        observer.complete();
+      }, 1000); // Simulate API delay
+    });
   }
 
   forgotPassword(email: string): Observable<any> {
-    return this.http.post(`${this.API_URL}/forgot-password`, { email })
-      .pipe(catchError(this.handleError));
+    // For demo purposes - replace with actual API call
+    return new Observable(observer => {
+      setTimeout(() => {
+        const demoEmails = ['admin@company.com', 'employee@company.com', 'manager@company.com'];
+        if (demoEmails.includes(email)) {
+          observer.next({ message: 'Password reset email sent successfully' });
+        } else {
+          observer.error(new Error('Email not found'));
+        }
+        observer.complete();
+      }, 1000);
+    });
   }
 
   resetPassword(token: string, password: string): Observable<any> {

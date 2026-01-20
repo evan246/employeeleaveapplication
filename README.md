@@ -86,6 +86,16 @@ git --version
 
 ## 📖 Usage
 
+### Demo Credentials
+
+For testing purposes, you can use these demo accounts:
+
+| Role | Email | Password | Access Level |
+|------|-------|----------|--------------|
+| **Admin** | `admin@company.com` | `admin123` | Full system access |
+| **Employee** | `employee@company.com` | `emp123` | Basic employee features |
+| **Manager** | `manager@company.com` | `mgr123` | Approval capabilities |
+
 ### For Employees:
 1. **Login**: Use your credentials to access the system
 2. **Apply for Leave**: Navigate to "Apply Leave" and fill out the form
