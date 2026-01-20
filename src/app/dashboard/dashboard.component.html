@@ -1,0 +1,75 @@
+<div class="flex h-screen bg-background">
+  <!-- Sidebar -->
+  <nav class="w-64 bg-card shadow-sm" role="navigation" aria-label="Main navigation">
+    <div class="p-6">
+      <h1 class="text-xl font-bold text-text-primary">Leave Management</h1>
+    </div>
+    <ul class="space-y-2 px-4">
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="bg-primary text-white" class="block px-4 py-2 text-text-primary hover:bg-primary hover:text-white rounded-lg transition-colors">
+          Dashboard
+        </a>
+      </li>
+      <li *ngIf="user?.role === 'employee'">
+        <a routerLink="/leave/apply" routerLinkActive="bg-primary text-white" class="block px-4 py-2 text-text-primary hover:bg-primary hover:text-white rounded-lg transition-colors">
+          Apply for Leave
+        </a>
+      </li>
+      <li>
+        <a routerLink="/leave/my-requests" routerLinkActive="bg-primary text-white" class="block px-4 py-2 text-text-primary hover:bg-primary hover:text-white rounded-lg transition-colors">
+          My Leave Requests
+        </a>
+      </li>
+      <li *ngIf="user?.role === 'manager' || user?.role === 'hr' || user?.role === 'admin'">
+        <a href="#" class="block px-4 py-2 text-text-primary hover:bg-primary hover:text-white rounded-lg transition-colors">
+          Approvals
+        </a>
+      </li>
+      <li *ngIf="user?.role === 'manager'">
+        <a href="#" class="block px-4 py-2 text-text-primary hover:bg-primary hover:text-white rounded-lg transition-colors">
+          Team Calendar
+        </a>
+      </li>
+      <li *ngIf="user?.role === 'hr' || user?.role === 'admin'">
+        <a href="#" class="block px-4 py-2 text-text-primary hover:bg-primary hover:text-white rounded-lg transition-colors">
+          Reports
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex flex-col">
+    <!-- Top Bar -->
+    <header class="bg-card shadow-sm px-6 py-4 flex justify-between items-center">
+      <h2 class="text-lg font-semibold text-text-primary">Dashboard</h2>
+      <div class="flex items-center space-x-4">
+        <button class="p-2 text-text-muted hover:text-text-primary" aria-label="Notifications">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM15 7v5h5l-5 5v-5z"></path>
+          </svg>
+        </button>
+        <div class="relative">
+          <button class="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100" aria-haspopup="true" aria-expanded="false">
+            <span class="text-text-primary">{{ user?.name }}</span>
+            <svg class="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <!-- Dropdown menu would go here -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <div class="flex-1 p-6">
+      <div class="bg-card rounded-xl shadow-sm p-6">
+        <h3 class="text-xl font-semibold text-text-primary mb-4">Welcome, {{ user?.name }}</h3>
+        <p class="text-text-muted">Role: {{ user?.role }}</p>
+        <button (click)="logout()" class="mt-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors">
+          Logout
+        </button>
+      </div>
+    </div>
+  </main>
+</div>

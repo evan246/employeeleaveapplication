@@ -1,0 +1,39 @@
+/* Input Component Styles */
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: all 200ms;
+  color: #111827;
+}
+
+.input-field:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #2563eb;
+}
+
+.input-field::placeholder {
+  color: #9ca3af;
+}
+
+.input-field:disabled {
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.input-field:invalid {
+  border-color: #fca5a5;
+}
+
+.input-field:invalid:focus {
+  box-shadow: 0 0 0 2px #fca5a5;
+}
+
+/* Error state */
+.input-wrapper:has(.input-field:invalid) .input-field {
+  border-color: #fca5a5;
+}
