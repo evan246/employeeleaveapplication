@@ -35,17 +35,34 @@ export class LoginComponent {
       this.isLoading = true;
       this.errorMessage = '';
       const credentials = this.loginForm.value;
+      console.log('Attempting login with:', credentials);
+
       this.authService.login(credentials).subscribe({
         next: (response) => {
+          console.log('Login successful:', response);
+          console.log('Current user after login:', this.authService.getCurrentUser());
           this.isLoading = false;
-          this.router.navigate(['/dashboard']);
+          
+          // Wait a bit for auth state to update before navigating
+          setTimeout(() => {
+            console.log('Navigating to dashboard...');
+            this.router.navigate(['/dashboard']).then(success => {
+              console.log('Navigation success:', success);
+              if (!success) {
+                console.error('Navigation failed');
+                this.errorMessage = 'Navigation failed. Please try again.';
+              }
+            });
+          }, 100);
         },
         error: (error) => {
+          console.error('Login error:', error);
           this.isLoading = false;
           this.errorMessage = error.message || 'Login failed. Please try again.';
         }
       });
     } else {
+      console.log('Form is invalid:', this.loginForm.errors);
       this.errorMessage = 'Please fill in all required fields correctly.';
     }
   }

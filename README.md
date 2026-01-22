@@ -93,8 +93,9 @@ For testing purposes, you can use these demo accounts:
 | Role | Email | Password | Access Level |
 |------|-------|----------|--------------|
 | **Admin** | `admin@company.com` | `admin123` | Full system access |
-| **Employee** | `employee@company.com` | `emp123` | Basic employee features |
 | **Manager** | `manager@company.com` | `mgr123` | Approval capabilities |
+| **Employee** | `employee@company.com` | `emp123` | Basic employee features |
+| **HR** | `hr@company.com` | `demo123` | HR management features |
 
 ### For Employees:
 1. **Login**: Use your credentials to access the system

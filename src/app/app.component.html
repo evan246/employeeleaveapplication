@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<div class="flex h-screen">
+  <app-sidebar *ngIf="showSidebar"></app-sidebar>
+
+  <!-- Auth routes (no sidebar layout) -->
+  <div *ngIf="isAuthRoute" class="flex-1">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- Admin routes (with sidebar layout) -->
+  <main *ngIf="!isAuthRoute" class="flex-1 flex flex-col bg-gray-50 pl-64 overflow-x-hidden">
+    <router-outlet></router-outlet>
+  </main>
+</div>

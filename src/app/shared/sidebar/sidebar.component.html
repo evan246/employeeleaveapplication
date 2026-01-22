@@ -1,0 +1,70 @@
+<div class="sidebar bg-gradient-to-b from-blue-600 to-blue-800 text-white h-screen fixed left-0 top-0 w-64 flex flex-col">
+  <!-- App Title -->
+  <div class="p-6">
+    <h1 class="text-xl font-bold">ELMS Admin</h1>
+  </div>
+
+  <!-- Menu Items -->
+  <nav class="flex-1 px-4">
+    <ul class="space-y-2">
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="bg-blue-700" class="block px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a routerLink="/employees" routerLinkActive="bg-blue-700" class="block px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Employees
+        </a>
+      </li>
+      <li>
+        <a routerLink="/leave/my-requests" routerLinkActive="bg-blue-700" class="block px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Leave Management
+        </a>
+      </li>
+      <li>
+        <a routerLink="/reports" routerLinkActive="bg-blue-700" class="block px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Reports
+        </a>
+        <!-- Reports Submenu -->
+        <!-- <ul class="ml-4 mt-1 space-y-1">
+          <li>
+            <a routerLink="/reports/leave-reports" routerLinkActive="bg-blue-700" class="block px-4 py-1 text-sm rounded hover:bg-blue-700 transition-colors">
+              Leave Reports
+            </a>
+          </li>
+          <li>
+            <a routerLink="/reports/employee-reports" routerLinkActive="bg-blue-700" class="block px-4 py-1 text-sm rounded hover:bg-blue-700 transition-colors">
+              Employee Reports
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li> -->
+        <a routerLink="/settings" routerLinkActive="bg-blue-700" class="block px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Settings
+        </a>
+        <!-- Settings Submenu -->
+        <!-- <ul class="ml-4 mt-1 space-y-1">
+          <li>
+            <a routerLink="/settings/general" routerLinkActive="bg-blue-700" class="block px-4 py-1 text-sm rounded hover:bg-blue-700 transition-colors">
+              General
+            </a>
+          </li>
+          <li>
+            <a routerLink="/settings/security" routerLinkActive="bg-blue-700" class="block px-4 py-1 text-sm rounded hover:bg-blue-700 transition-colors">
+              Security
+            </a>
+          </li>
+        </ul> -->
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Logout Button -->
+  <div class="p-4">
+    <button (click)="logout()" class="w-full bg-red-600 hover:bg-red-700 text-red px-4 py-2 rounded-lg transition-colors">
+      Logout
+    </button>
+  </div>
+</div>

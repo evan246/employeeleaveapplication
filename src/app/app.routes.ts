@@ -26,6 +26,11 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'employees',
+    loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent), // Placeholder
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'leave',
     canActivate: [AuthGuard],
     children: [
@@ -36,6 +41,42 @@ export const routes: Routes = [
       {
         path: 'my-requests',
         loadComponent: () => import('./leave/my-leave-requests/my-leave-requests.component').then(m => m.MyLeaveRequestsComponent)
+      }
+    ]
+  },
+  {
+    path: 'reports',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent)
+      },
+      {
+        path: 'leave-reports',
+        loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent) // Placeholder
+      },
+      {
+        path: 'employee-reports',
+        loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent) // Placeholder
+      }
+    ]
+  },
+  {
+    path: 'settings',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent)
+      },
+      {
+        path: 'general',
+        loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent) // Placeholder
+      },
+      {
+        path: 'security',
+        loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent) // Placeholder
       }
     ]
   },
